@@ -1,0 +1,930 @@
+type ComponentAccordionAccordion {
+  id: ID!
+  titulo: String
+  list: String
+}
+
+input ComponentAccordionAccordionInput {
+  titulo: String
+  list: String
+}
+
+type ComponentLayoutHeader {
+  id: ID!
+  Title: String
+  url: String
+}
+
+input ComponentLayoutHeaderInput {
+  Title: String
+  url: String
+}
+
+type ComponentListList {
+  id: ID!
+  list: String
+}
+
+input ComponentListListInput {
+  list: String
+}
+
+type ComponentTitleTitle {
+  id: ID!
+  title: String
+}
+
+input ComponentTitleTitleInput {
+  title: String
+}
+
+input createHomeInput {
+  data: HomeInput
+}
+
+type createHomePayload {
+  home: Home
+}
+
+input createLayoutInput {
+  data: LayoutInput
+}
+
+type createLayoutPayload {
+  layout: Layout
+}
+
+input createRoleInput {
+  data: RoleInput
+}
+
+type createRolePayload {
+  role: UsersPermissionsRole
+}
+
+input createUserInput {
+  data: UserInput
+}
+
+type createUserPayload {
+  user: UsersPermissionsUser
+}
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format
+outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for
+representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
+`date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
+8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+type deleteFooterPayload {
+  footer: Footer
+}
+
+type deleteHeaderPayload {
+  header: Header
+}
+
+input deleteHomeInput {
+  where: InputID
+}
+
+type deleteHomePayload {
+  home: Home
+}
+
+input deleteLayoutInput {
+  where: InputID
+}
+
+type deleteLayoutPayload {
+  layout: Layout
+}
+
+input deleteRoleInput {
+  where: InputID
+}
+
+type deleteRolePayload {
+  role: UsersPermissionsRole
+}
+
+input deleteUserInput {
+  where: InputID
+}
+
+type deleteUserPayload {
+  user: UsersPermissionsUser
+}
+
+type deleteYamlPayload {
+  yaml: Yaml
+}
+
+input editComponentAccordionAccordionInput {
+  id: ID
+  titulo: String
+  list: String
+}
+
+input editComponentLayoutHeaderInput {
+  id: ID
+  Title: String
+  url: String
+}
+
+input editComponentListListInput {
+  id: ID
+  list: String
+}
+
+input editComponentTitleTitleInput {
+  id: ID
+  title: String
+}
+
+input editFileInput {
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  previewUrl: String
+  provider: String
+  provider_metadata: JSON
+  related: [ID]
+}
+
+input editFooterInput {
+  link: [editComponentLayoutHeaderInput]
+}
+
+input editHeaderInput {
+  link: [editComponentLayoutHeaderInput]
+}
+
+input editHomeInput {
+  content: String
+  image_bg: ID
+  titulo: String
+  altimage: String
+  button_text: String
+  button_link: String
+  lists: [HomeListsDynamicZoneInput!]
+  name: String
+  accordion: [HomeAccordionDynamicZoneInput!]
+}
+
+input editLayoutInput {
+  Header: [editComponentLayoutHeaderInput]
+  Footer: [editComponentLayoutHeaderInput]
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+input editUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+}
+
+input editYamlInput {
+  yaml: ID
+  json: JSON
+}
+
+input FileInput {
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related: [ID]
+}
+
+type Footer {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  link: [ComponentLayoutHeader]
+}
+
+input FooterInput {
+  link: [ComponentLayoutHeaderInput]
+}
+
+type Header {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  link: [ComponentLayoutHeader]
+}
+
+input HeaderInput {
+  link: [ComponentLayoutHeaderInput]
+}
+
+type Home {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  content: String
+  image_bg: UploadFile
+  titulo: String
+  altimage: String
+  button_text: String
+  button_link: String
+  lists: [HomeListsDynamicZone]
+  name: String
+  accordion: [HomeAccordionDynamicZone]
+}
+
+union HomeAccordionDynamicZone = ComponentAccordionAccordion
+
+"""Input type for dynamic zone accordion of Home"""
+scalar HomeAccordionDynamicZoneInput
+
+type HomeAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type HomeConnection {
+  values: [Home]
+  groupBy: HomeGroupBy
+  aggregate: HomeAggregator
+}
+
+type HomeConnectionAltimage {
+  key: String
+  connection: HomeConnection
+}
+
+type HomeConnectionButton_link {
+  key: String
+  connection: HomeConnection
+}
+
+type HomeConnectionButton_text {
+  key: String
+  connection: HomeConnection
+}
+
+type HomeConnectionContent {
+  key: String
+  connection: HomeConnection
+}
+
+type HomeConnectionCreated_at {
+  key: DateTime
+  connection: HomeConnection
+}
+
+type HomeConnectionId {
+  key: ID
+  connection: HomeConnection
+}
+
+type HomeConnectionImage_bg {
+  key: ID
+  connection: HomeConnection
+}
+
+type HomeConnectionName {
+  key: String
+  connection: HomeConnection
+}
+
+type HomeConnectionTitulo {
+  key: String
+  connection: HomeConnection
+}
+
+type HomeConnectionUpdated_at {
+  key: DateTime
+  connection: HomeConnection
+}
+
+type HomeGroupBy {
+  id: [HomeConnectionId]
+  created_at: [HomeConnectionCreated_at]
+  updated_at: [HomeConnectionUpdated_at]
+  content: [HomeConnectionContent]
+  image_bg: [HomeConnectionImage_bg]
+  titulo: [HomeConnectionTitulo]
+  altimage: [HomeConnectionAltimage]
+  button_text: [HomeConnectionButton_text]
+  button_link: [HomeConnectionButton_link]
+  name: [HomeConnectionName]
+}
+
+input HomeInput {
+  content: String
+  image_bg: ID
+  titulo: String
+  altimage: String
+  button_text: String
+  button_link: String
+  lists: [HomeListsDynamicZoneInput!]
+  name: String
+  accordion: [HomeAccordionDynamicZoneInput!]
+}
+
+union HomeListsDynamicZone = ComponentListList
+
+"""Input type for dynamic zone lists of Home"""
+scalar HomeListsDynamicZoneInput
+
+input InputID {
+  id: ID!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+type Layout {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  Header: [ComponentLayoutHeader]
+  Footer: [ComponentLayoutHeader]
+}
+
+type LayoutAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type LayoutConnection {
+  values: [Layout]
+  groupBy: LayoutGroupBy
+  aggregate: LayoutAggregator
+}
+
+type LayoutConnectionCreated_at {
+  key: DateTime
+  connection: LayoutConnection
+}
+
+type LayoutConnectionId {
+  key: ID
+  connection: LayoutConnection
+}
+
+type LayoutConnectionUpdated_at {
+  key: DateTime
+  connection: LayoutConnection
+}
+
+type LayoutGroupBy {
+  id: [LayoutConnectionId]
+  created_at: [LayoutConnectionCreated_at]
+  updated_at: [LayoutConnectionUpdated_at]
+}
+
+input LayoutInput {
+  Header: [ComponentLayoutHeaderInput]
+  Footer: [ComponentLayoutHeaderInput]
+}
+
+"""The `Long` scalar type represents 52-bit integers"""
+scalar Long
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Footer | updateFooterPayload | deleteFooterPayload | Header | updateHeaderPayload | deleteHeaderPayload | Home | HomeConnection | HomeAggregator | HomeGroupBy | HomeConnectionId | HomeConnectionCreated_at | HomeConnectionUpdated_at | HomeConnectionContent | HomeConnectionImage_bg | HomeConnectionTitulo | HomeConnectionAltimage | HomeConnectionButton_text | HomeConnectionButton_link | HomeConnectionName | createHomePayload | updateHomePayload | deleteHomePayload | Layout | LayoutConnection | LayoutAggregator | LayoutGroupBy | LayoutConnectionId | LayoutConnectionCreated_at | LayoutConnectionUpdated_at | createLayoutPayload | updateLayoutPayload | deleteLayoutPayload | Yaml | updateYamlPayload | deleteYamlPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentAccordionAccordion | ComponentLayoutHeader | ComponentListList | ComponentTitleTitle
+
+type Mutation {
+  updateFooter(input: updateFooterInput): updateFooterPayload
+  deleteFooter: deleteFooterPayload
+  updateHeader(input: updateHeaderInput): updateHeaderPayload
+  deleteHeader: deleteHeaderPayload
+  createHome(input: createHomeInput): createHomePayload
+  updateHome(input: updateHomeInput): updateHomePayload
+  deleteHome(input: deleteHomeInput): deleteHomePayload
+  createLayout(input: createLayoutInput): createLayoutPayload
+  updateLayout(input: updateLayoutInput): updateLayoutPayload
+  deleteLayout(input: deleteLayoutInput): deleteLayoutPayload
+  updateYaml(input: updateYamlInput): updateYamlPayload
+  deleteYaml: deleteYamlPayload
+
+  """Create a new role"""
+  createRole(input: createRoleInput): createRolePayload
+
+  """Update an existing role"""
+  updateRole(input: updateRoleInput): updateRolePayload
+
+  """Delete an existing role"""
+  deleteRole(input: deleteRoleInput): deleteRolePayload
+
+  """Create a new user"""
+  createUser(input: createUserInput): createUserPayload
+
+  """Update an existing user"""
+  updateUser(input: updateUserInput): updateUserPayload
+
+  """Delete an existing user"""
+  deleteUser(input: deleteUserInput): deleteUserPayload
+  upload(refId: ID, ref: String, field: String, source: String, file: Upload!): UploadFile!
+  multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+  register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
+  forgotPassword(email: String!): UserPermissionsPasswordPayload
+  resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
+  emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
+}
+
+type Query {
+  footer: Footer
+  header: Header
+  home(id: ID!): Home
+  homes(sort: String, limit: Int, start: Int, where: JSON): [Home]
+  homesConnection(sort: String, limit: Int, start: Int, where: JSON): HomeConnection
+  layout(id: ID!): Layout
+  layouts(sort: String, limit: Int, start: Int, where: JSON): [Layout]
+  layoutsConnection(sort: String, limit: Int, start: Int, where: JSON): LayoutConnection
+  yaml: Yaml
+  files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
+  role(id: ID!): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsRole]
+  rolesConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsRoleConnection
+  user(id: ID!): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+  usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
+  me: UsersPermissionsMe
+}
+
+input RoleInput {
+  name: String!
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+"""A time string with format: HH:mm:ss.SSS"""
+scalar Time
+
+input updateFooterInput {
+  data: editFooterInput
+}
+
+type updateFooterPayload {
+  footer: Footer
+}
+
+input updateHeaderInput {
+  data: editHeaderInput
+}
+
+type updateHeaderPayload {
+  header: Header
+}
+
+input updateHomeInput {
+  where: InputID
+  data: editHomeInput
+}
+
+type updateHomePayload {
+  home: Home
+}
+
+input updateLayoutInput {
+  where: InputID
+  data: editLayoutInput
+}
+
+type updateLayoutPayload {
+  layout: Layout
+}
+
+input updateRoleInput {
+  where: InputID
+  data: editRoleInput
+}
+
+type updateRolePayload {
+  role: UsersPermissionsRole
+}
+
+input updateUserInput {
+  where: InputID
+  data: editUserInput
+}
+
+type updateUserPayload {
+  user: UsersPermissionsUser
+}
+
+input updateYamlInput {
+  data: editYamlInput
+}
+
+type updateYamlPayload {
+  yaml: Yaml
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type UploadFile {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+}
+
+type UploadFileAggregator {
+  count: Int
+  totalCount: Int
+  sum: UploadFileAggregatorSum
+  avg: UploadFileAggregatorAvg
+  min: UploadFileAggregatorMin
+  max: UploadFileAggregatorMax
+}
+
+type UploadFileAggregatorAvg {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMax {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMin {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorSum {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileConnection {
+  values: [UploadFile]
+  groupBy: UploadFileGroupBy
+  aggregate: UploadFileAggregator
+}
+
+type UploadFileConnectionAlternativeText {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCaption {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionExt {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionFormats {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHash {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHeight {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionId {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionMime {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionName {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionPreviewUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider_metadata {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionSize {
+  key: Float
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUpdated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionWidth {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileGroupBy {
+  id: [UploadFileConnectionId]
+  created_at: [UploadFileConnectionCreated_at]
+  updated_at: [UploadFileConnectionUpdated_at]
+  name: [UploadFileConnectionName]
+  alternativeText: [UploadFileConnectionAlternativeText]
+  caption: [UploadFileConnectionCaption]
+  width: [UploadFileConnectionWidth]
+  height: [UploadFileConnectionHeight]
+  formats: [UploadFileConnectionFormats]
+  hash: [UploadFileConnectionHash]
+  ext: [UploadFileConnectionExt]
+  mime: [UploadFileConnectionMime]
+  size: [UploadFileConnectionSize]
+  url: [UploadFileConnectionUrl]
+  previewUrl: [UploadFileConnectionPreviewUrl]
+  provider: [UploadFileConnectionProvider]
+  provider_metadata: [UploadFileConnectionProvider_metadata]
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+}
+
+type UserPermissionsPasswordPayload {
+  ok: Boolean!
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String = "local"
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String!
+  user: UsersPermissionsMe!
+}
+
+type UsersPermissionsMe {
+  id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+type UsersPermissionsPermission {
+  id: ID!
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+}
+
+input UsersPermissionsRegisterInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+type UsersPermissionsRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type UsersPermissionsRoleAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsRoleConnection {
+  values: [UsersPermissionsRole]
+  groupBy: UsersPermissionsRoleGroupBy
+  aggregate: UsersPermissionsRoleAggregator
+}
+
+type UsersPermissionsRoleConnectionDescription {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionId {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionName {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionType {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleGroupBy {
+  id: [UsersPermissionsRoleConnectionId]
+  name: [UsersPermissionsRoleConnectionName]
+  description: [UsersPermissionsRoleConnectionDescription]
+  type: [UsersPermissionsRoleConnectionType]
+}
+
+type UsersPermissionsUser {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsUserAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsUserConnection {
+  values: [UsersPermissionsUser]
+  groupBy: UsersPermissionsUserGroupBy
+  aggregate: UsersPermissionsUserAggregator
+}
+
+type UsersPermissionsUserConnectionBlocked {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionConfirmed {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionCreated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionEmail {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionId {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionProvider {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionRole {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUpdated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUsername {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserGroupBy {
+  id: [UsersPermissionsUserConnectionId]
+  created_at: [UsersPermissionsUserConnectionCreated_at]
+  updated_at: [UsersPermissionsUserConnectionUpdated_at]
+  username: [UsersPermissionsUserConnectionUsername]
+  email: [UsersPermissionsUserConnectionEmail]
+  provider: [UsersPermissionsUserConnectionProvider]
+  confirmed: [UsersPermissionsUserConnectionConfirmed]
+  blocked: [UsersPermissionsUserConnectionBlocked]
+  role: [UsersPermissionsUserConnectionRole]
+}
+
+type Yaml {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  yaml: UploadFile
+  json: JSON
+}
+
+input YamlInput {
+  yaml: ID
+  json: JSON
+}
