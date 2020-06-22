@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "yamls",
+  "info": {
+    "name": "yaml"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "yaml": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "json": {
+      "type": "json"
+    }
+  }
+}

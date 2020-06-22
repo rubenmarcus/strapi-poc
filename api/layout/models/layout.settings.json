@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "layouts",
+  "info": {
+    "name": "Layout"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Header": {
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.header"
+    },
+    "Footer": {
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.header"
+    }
+  }
+}

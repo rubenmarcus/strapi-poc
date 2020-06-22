@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_layout_headers",
+  "info": {
+    "name": "Link",
+    "icon": "window-minimize"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

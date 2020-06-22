@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "home",
+  "info": {
+    "name": "Home"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "content": {
+      "type": "richtext",
+      "required": false
+    },
+    "image_bg": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "titulo": {
+      "type": "string"
+    },
+    "altimage": {
+      "type": "string"
+    },
+    "button_text": {
+      "type": "string"
+    },
+    "button_link": {
+      "type": "string"
+    },
+    "lists": {
+      "type": "dynamiczone",
+      "components": [
+        "list.list"
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "accordion": {
+      "type": "dynamiczone",
+      "components": [
+        "accordion.accordion"
+      ]
+    }
+  }
+}

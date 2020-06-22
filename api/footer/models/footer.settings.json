@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "footers",
+  "info": {
+    "name": "Footer"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "link": {
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.header"
+    }
+  }
+}

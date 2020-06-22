@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/yaml",
+      "handler": "yaml.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/yaml",
+      "handler": "yaml.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/yaml",
+      "handler": "yaml.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
